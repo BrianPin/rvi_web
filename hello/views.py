@@ -4,9 +4,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def home(request):
-    return HttpResponse("Hello Django")
-
 def hello_there(request, name='RVI'):
     print(request.build_absolute_uri()) #optional
     return render(
@@ -17,3 +14,11 @@ def hello_there(request, name='RVI'):
             'date': datetime.now()
         }
     )
+
+# Replace the existing home function with the one below
+def home(request):
+    return render(request, "hello/home.html")
+
+def about(request):
+    return render(request, "hello/about.html")
+
